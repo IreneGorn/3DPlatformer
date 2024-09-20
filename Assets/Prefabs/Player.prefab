@@ -184,8 +184,6 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 5
   maxHealth: 100
-  _startPoint: {fileID: 0}
-  _gameManager: {fileID: 0}
 --- !u!1 &4605777599108149860
 GameObject:
   m_ObjectHideFlags: 0

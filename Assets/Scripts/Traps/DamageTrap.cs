@@ -17,7 +17,7 @@ public class DamageTrap : Trap
         _originalColor = _renderer.material.color;
     }
 
-    protected override void Activate()
+    protected override void Activate(Collision other)
     {
         if (!_isActive)
         {
@@ -27,9 +27,9 @@ public class DamageTrap : Trap
         }
     }
 
-    protected override void Deactivate()
+    protected override void Deactivate(Collision other)
     {
-        // Deactivation logic is handled in ActivationSequence
+        
     }
 
     private IEnumerator ActivationSequence()

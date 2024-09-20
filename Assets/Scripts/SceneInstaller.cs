@@ -17,13 +17,13 @@ public class SceneInstaller : MonoInstaller
             .AsSingle()
             .NonLazy();
         
-        Container.Bind<IPlayerController>().To<PlayerController>()
-            .FromComponentInNewPrefab(playerPrefab)
-            .AsSingle()
-            .NonLazy();
-
         Container.Bind<ILevelGenerator>().To<LevelGenerator>()
             .FromComponentInNewPrefab(levelGeneratorPrefab)
+            .AsSingle()
+            .NonLazy();
+        
+        Container.Bind<IPlayerController>().To<PlayerController>()
+            .FromComponentInNewPrefab(playerPrefab)
             .AsSingle()
             .NonLazy();
 

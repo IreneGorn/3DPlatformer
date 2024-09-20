@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2571050271174609268, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3806874143692362214, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,8 +54,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585145477671301277, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
       propertyPath: m_Name
-      value: DefaultPlatform Variant
+      value: WindTrapPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 7903979998498740127, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 034b841ae086e644ebeaf70182a01140, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -77,5 +85,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ed5b63518c4585919b6ab81d008d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _windForce: 5
+  _windForce: 50
   _directionChangeInterval: 2

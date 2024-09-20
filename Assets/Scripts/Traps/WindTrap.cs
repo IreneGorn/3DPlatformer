@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WindTrap : Trap
@@ -7,31 +8,42 @@ public class WindTrap : Trap
     [SerializeField] private float _directionChangeInterval = 2f;
 
     private Vector3 _currentWindDirection;
-    private Rigidbody _playerRigidbody;
+    private List<Rigidbody> _affectedRigidbodies = new List<Rigidbody>();
 
     private void Start()
     {
         StartCoroutine(ChangeWindDirection());
     }
 
-    protected override void Activate()
+    protected override void Activate(Collision other)
     {
-        if (_playerRigidbody == null)
+        if (other.gameObject.CompareTag("Player"))
         {
-            _playerRigidbody = FindObjectOfType<PlayerController>().GetComponent<Rigidbody>();
+            Rigidbody playerRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            if (playerRigidbody != null && !_affectedRigidbodies.Contains(playerRigidbody))
+            {
+                _affectedRigidbodies.Add(playerRigidbody);
+            }
         }
     }
 
-    protected override void Deactivate()
+    protected override void Deactivate(Collision other)
     {
-        _playerRigidbody = null;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Rigidbody playerRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            if (playerRigidbody != null && _affectedRigidbodies.Contains(playerRigidbody))
+            {
+                _affectedRigidbodies.Remove(playerRigidbody);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        if (_playerRigidbody != null)
+        foreach (var playerRigidbody in _affectedRigidbodies)
         {
-            _playerRigidbody.AddForce(_currentWindDirection * _windForce);
+            playerRigidbody.AddForce(_currentWindDirection * _windForce, ForceMode.Force);
         }
     }
 

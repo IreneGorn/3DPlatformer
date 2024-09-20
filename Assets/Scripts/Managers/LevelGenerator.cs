@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelGenerator : MonoBehaviour, ILevelGenerator
 {
@@ -14,6 +15,8 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
     [SerializeField] private int trapCount = 5; // Количество ловушек
 
     private List<GameObject> generatedPlatforms = new List<GameObject>();
+    
+    public event UnityAction OnLevelGenerated;
 
     public void GenerateLevel()
     {
@@ -44,6 +47,8 @@ public class LevelGenerator : MonoBehaviour, ILevelGenerator
         Vector3 finishPosition = new Vector3(0, 0, currentLeftPathPosition.z + finishDistance);
         GameObject finishPlatform = Instantiate(finishPlatformPrefab, finishPosition, Quaternion.identity);
         generatedPlatforms.Add(finishPlatform);
+        
+        OnLevelGenerated?.Invoke();
     }
 
     private void CreatePlatformOrTrap(Vector3 position)

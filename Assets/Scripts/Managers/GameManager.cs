@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour, IGameManager
         _levelGenerator = levelGenerator;
         _playerController = playerController;
         _uiManager = uiManager;
+        
+        _levelGenerator.OnLevelGenerated += OnLevelGenerated;
 
         _playerController.OnPlayerDeath += HandlePlayerDeath;
         _playerController.OnPlayerHealthChanged += UpdateUIHealth;
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour, IGameManager
     {
         OnGameStart += StartGame;
         OnGameEnd += EndGame;
+        
+        StartGame();
     }
 
     private void OnDestroy()
@@ -34,15 +38,19 @@ public class GameManager : MonoBehaviour, IGameManager
         _playerController.OnPlayerDeath -= HandlePlayerDeath;
         _playerController.OnPlayerHealthChanged -= UpdateUIHealth;
     }
+    
+    private void OnLevelGenerated()
+    {
+        _playerController.ResetPlayer();
+        _startTime = Time.time;
+        _uiManager.UpdateHealthDisplay(_playerController.GetHealth());
+        _uiManager.HideEndGameScreen();
+    }
 
     public void StartGame()
     {
         Debug.Log("Game started");
         _levelGenerator.GenerateLevel();
-        _playerController.ResetPlayer();
-        _startTime = Time.time;
-        _uiManager.UpdateHealthDisplay(_playerController.GetHealth());
-        _uiManager.HideEndGameScreen();
     }
 
     public void EndGame(bool isVictory)

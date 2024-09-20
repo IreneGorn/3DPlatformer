@@ -1,23 +1,24 @@
+using System;
 using UnityEngine;
 
 public abstract class Trap : MonoBehaviour
 {
-    protected abstract void Activate();
-    protected abstract void Deactivate();
+    protected abstract void Activate(Collision other);
+    protected abstract void Deactivate(Collision other);
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            Activate();
+            Activate(other);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            Deactivate();
+            Deactivate(other);
         }
     }
 }

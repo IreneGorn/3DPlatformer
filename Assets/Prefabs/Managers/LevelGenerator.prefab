@@ -51,6 +51,6 @@ MonoBehaviour:
   - {fileID: 2657486892262549728, guid: fe7514426ff6eca46a1556eb6a078af8, type: 3}
   - {fileID: 6283123965966296728, guid: 7611d7a628e3e77479582f3b3914835c, type: 3}
   platformsBeforeFinish: 20
-  platformSpacing: 3
-  finishDistance: 10
-  trapCount: 5
+  platformSpacing: 4
+  finishDistance: 8
+  trapCount: 8

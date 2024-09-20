@@ -1,4 +1,5 @@
-public class TrapManager : ITrapManager
+using UnityEngine;
+public class TrapManager : MonoBehaviour, ITrapManager
 {
     public void InitializeTraps()
     {

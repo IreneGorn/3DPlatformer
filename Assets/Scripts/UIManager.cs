@@ -1,4 +1,5 @@
-public class UIManager : IUIManager
+using UnityEngine;
+public class UIManager : MonoBehaviour, IUIManager
 {
     public void UpdateHealthDisplay(int health)
     {

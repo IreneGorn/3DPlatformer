@@ -1,18 +1,16 @@
 using UnityEngine;
-using Zenject;
 
 public class PlayerController : MonoBehaviour, IPlayerController
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private Transform _startPoint;
+    [SerializeField] private GameManager _gameManager;
 
     private int currentHealth;
     private Rigidbody rb;
     private bool isGrounded;
-
-    [Inject]
-    private IGameManager gameManager;
 
     private void Start()
     {
@@ -55,8 +53,15 @@ public class PlayerController : MonoBehaviour, IPlayerController
     public void ResetPlayer()
     {
         currentHealth = maxHealth;
-        transform.position = Vector3.zero; // или другая начальная позиция
-        gameManager.StartGame();
+        transform.position = new Vector3(0,2,0);
+        if (_gameManager != null)
+        {
+            _gameManager.StartGame();
+        }
+        else
+        {
+            Debug.LogError("GameManager is not injected into PlayerController");
+        }
     }
 
     public int GetHealth()
@@ -69,7 +74,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
-            gameManager.EndGame(false);
+            _gameManager.EndGame(false);
         }
     }
 }

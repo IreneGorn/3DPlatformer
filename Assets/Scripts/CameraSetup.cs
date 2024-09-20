@@ -4,19 +4,19 @@ using Zenject;
 
 public class CameraSetup : MonoBehaviour
 {
-    private CinemachineVirtualCamera virtualCamera;
-    private IPlayerController playerController;
+    private CinemachineFreeLook  _freeLookCamera;
+    private IPlayerController _playerController;
 
     [Inject]
     public void Construct(IPlayerController playerController)
     {
-        this.playerController = playerController;
+        _playerController = playerController;
     }
 
     private void Start()
     {
-        virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        if (virtualCamera == null)
+        _freeLookCamera = GetComponent<CinemachineFreeLook>();
+        if (_freeLookCamera == null)
         {
             Debug.LogError("CinemachineVirtualCamera component not found on this GameObject.");
             return;
@@ -27,22 +27,22 @@ public class CameraSetup : MonoBehaviour
 
     private void SetupCamera()
     {
-        if (playerController == null)
+        if (_playerController == null)
         {
             Debug.LogError("PlayerController is null. Make sure it's properly injected.");
             return;
         }
 
-        Transform playerTransform = (playerController as MonoBehaviour)?.transform;
+        Transform playerTransform = (_playerController as MonoBehaviour)?.transform;
         if (playerTransform == null)
         {
             Debug.LogError("Player Transform not found.");
             return;
         }
 
-        virtualCamera.Follow = playerTransform;
-        virtualCamera.LookAt = playerTransform;
+        _freeLookCamera.Follow = playerTransform;
+        _freeLookCamera.LookAt = playerTransform;
         
-        Debug.Log("Camera setup complete. Following player.");
+        Debug.Log("FreeLook camera setup complete. Following and looking at player.");
     }
 }

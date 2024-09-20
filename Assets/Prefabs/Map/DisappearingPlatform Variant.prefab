@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7535532017744352773
+--- !u!1001 &6843081729835153896
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,10 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2571050271174609268, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3806874143692362214, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -54,36 +50,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585145477671301277, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
       propertyPath: m_Name
-      value: WindTrapPrefab
+      value: DisappearingPlatform Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7903979998498740127, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 034b841ae086e644ebeaf70182a01140, type: 2}
+      objectReference: {fileID: 2100000, guid: 6fe8c0946835a7941a2a1ed4ea19be76, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4585145477671301277, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 404356367443921262}
+      addedObject: {fileID: 4795851131180177357}
   m_SourcePrefab: {fileID: 100100000, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
---- !u!1 &6283123965966296728 stripped
+--- !u!1 &7013854043409484149 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4585145477671301277, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
-  m_PrefabInstance: {fileID: 7535532017744352773}
+  m_PrefabInstance: {fileID: 6843081729835153896}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &404356367443921262
+--- !u!114 &4795851131180177357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6283123965966296728}
+  m_GameObject: {fileID: 7013854043409484149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ed5b63518c4585919b6ab81d008d96, type: 3}
+  m_Script: {fileID: 11500000, guid: c29fc6ee459ee16439c83fcf1596f084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _windForce: 12
-  _directionChangeInterval: 2
+  _disappearTime: 3

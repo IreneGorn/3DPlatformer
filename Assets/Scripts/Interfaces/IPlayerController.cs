@@ -7,5 +7,6 @@ public interface IPlayerController
     void TakeDamage(int amount);
     
     event UnityAction OnPlayerDeath;
+    event UnityAction OnPlayerWin;
     event UnityAction<int> OnPlayerHealthChanged;
 }

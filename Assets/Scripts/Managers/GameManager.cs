@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour, IGameManager
         _levelGenerator.OnLevelGenerated += OnLevelGenerated;
 
         _playerController.OnPlayerDeath += HandlePlayerDeath;
+        _playerController.OnPlayerWin += HandlePlayerWin;
         _playerController.OnPlayerHealthChanged += UpdateUIHealth;
     }
 
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour, IGameManager
     private void OnDestroy()
     {
         _playerController.OnPlayerDeath -= HandlePlayerDeath;
+        _playerController.OnPlayerWin -= HandlePlayerWin;
         _playerController.OnPlayerHealthChanged -= UpdateUIHealth;
     }
     
@@ -64,6 +66,11 @@ public class GameManager : MonoBehaviour, IGameManager
     private void HandlePlayerDeath()
     {
         EndGame(false);
+    }
+    
+    private void HandlePlayerWin()
+    {
+        EndGame(true);
     }
 
     private void UpdateUIHealth(int currentHealth)

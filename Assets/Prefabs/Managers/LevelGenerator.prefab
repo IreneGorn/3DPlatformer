@@ -44,13 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37ba84b3376d7b4e8e7ad31c4be07b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformPrefab: {fileID: 4585145477671301277, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
-  startPlatformPrefab: {fileID: 1649834985859620495, guid: 889da688f7e7e2c4c9640d5bfcf70661, type: 3}
-  finishPlatformPrefab: {fileID: 7286046240658285165, guid: 058fd60038a660a4494ec452c1142958, type: 3}
-  trapPrefabs:
+  _platformPrefab: {fileID: 4585145477671301277, guid: 773759a0a916b9d44bfd55efb226c069, type: 3}
+  _startPlatformPrefab: {fileID: 1649834985859620495, guid: 889da688f7e7e2c4c9640d5bfcf70661, type: 3}
+  _finishPlatformPrefab: {fileID: 7286046240658285165, guid: 058fd60038a660a4494ec452c1142958, type: 3}
+  _trapPrefabs:
   - {fileID: 2657486892262549728, guid: fe7514426ff6eca46a1556eb6a078af8, type: 3}
+  - {fileID: 7013854043409484149, guid: 6334f8730bfff5a428c4f78284e15f22, type: 3}
   - {fileID: 6283123965966296728, guid: 7611d7a628e3e77479582f3b3914835c, type: 3}
-  platformsBeforeFinish: 20
-  platformSpacing: 4
-  finishDistance: 8
-  trapCount: 8
+  _platformsBeforeFinish: 20
+  _platformSpacing: 4
+  _finishDistance: 8
+  _trapCount: 12
+  _pathWidth: 4
+  _curveStrength: 12

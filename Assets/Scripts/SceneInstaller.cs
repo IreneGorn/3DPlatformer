@@ -1,42 +1,43 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class SceneInstaller : MonoInstaller
 {
-    public GameObject playerPrefab;
-    public GameObject gameManagerPrefab;
-    public GameObject levelGeneratorPrefab;
-    public GameObject uiManagerPrefab;
-    public GameObject trapManagerPrefab;
-    public CameraSetup cameraSetupPrefab;
+    public GameObject _playerPrefab;
+    public GameObject _gameManagerPrefab;
+    public GameObject _levelGeneratorPrefab;
+    public GameObject _uiManagerPrefab;
+    public GameObject _trapManagerPrefab;
+    public CameraSetup _cameraSetupPrefab;
 
     public override void InstallBindings()
     {
         Container.Bind<IGameManager>().To<GameManager>()
-            .FromComponentInNewPrefab(gameManagerPrefab)
+            .FromComponentInNewPrefab(_gameManagerPrefab)
             .AsSingle()
             .NonLazy();
         
         Container.Bind<ILevelGenerator>().To<LevelGenerator>()
-            .FromComponentInNewPrefab(levelGeneratorPrefab)
+            .FromComponentInNewPrefab(_levelGeneratorPrefab)
             .AsSingle()
             .NonLazy();
         
         Container.Bind<IPlayerController>().To<PlayerController>()
-            .FromComponentInNewPrefab(playerPrefab)
+            .FromComponentInNewPrefab(_playerPrefab)
             .AsSingle()
             .NonLazy();
 
         Container.Bind<IUIManager>().To<UIManager>()
-            .FromComponentInNewPrefab(uiManagerPrefab)
+            .FromComponentInNewPrefab(_uiManagerPrefab)
             .AsSingle()
             .NonLazy();
 
         Container.Bind<ITrapManager>().To<TrapManager>()
-            .FromComponentInNewPrefab(trapManagerPrefab)
+            .FromComponentInNewPrefab(_trapManagerPrefab)
             .AsSingle()
             .NonLazy();
         
-        Container.Bind<CameraSetup>().FromComponentInNewPrefab(cameraSetupPrefab).AsSingle().NonLazy();
+        Container.Bind<CameraSetup>().FromComponentInNewPrefab(_cameraSetupPrefab).AsSingle().NonLazy();
     }
 }

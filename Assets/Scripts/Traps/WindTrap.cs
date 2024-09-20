@@ -8,7 +8,7 @@ public class WindTrap : Trap
     [SerializeField] private float _directionChangeInterval = 2f;
 
     private Vector3 _currentWindDirection;
-    private List<Rigidbody> _affectedRigidbodies = new List<Rigidbody>();
+    private readonly List<Rigidbody> _affectedRigidbodies = new List<Rigidbody>();
 
     private void Start()
     {

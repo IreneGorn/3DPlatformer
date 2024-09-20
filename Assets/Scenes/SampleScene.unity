@@ -199,12 +199,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7803fa0cdccd51b4eb99699fcc363762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 4433151453949567563, guid: 64191d072a89f164fb3838fcd1cb63fb, type: 3}
-  gameManagerPrefab: {fileID: 2383361873363755448, guid: c5ddfe30e66afdc49b1f84c7dfefa910, type: 3}
-  levelGeneratorPrefab: {fileID: 1519229478733122078, guid: b0ff2412265c5e645b18ad0df6397f3b, type: 3}
-  uiManagerPrefab: {fileID: 7678028157288563493, guid: dce1dda84931acf4cbda670c5c00daf9, type: 3}
-  trapManagerPrefab: {fileID: 1450685114755792392, guid: c335f073df205cd4eb525e79a99d6745, type: 3}
-  cameraSetupPrefab: {fileID: 4541231348026176939, guid: d9c4a4a163f4b5846a20de3ce1b43457, type: 3}
+  _playerPrefab: {fileID: 4433151453949567563, guid: 64191d072a89f164fb3838fcd1cb63fb, type: 3}
+  _gameManagerPrefab: {fileID: 2383361873363755448, guid: c5ddfe30e66afdc49b1f84c7dfefa910, type: 3}
+  _levelGeneratorPrefab: {fileID: 1519229478733122078, guid: b0ff2412265c5e645b18ad0df6397f3b, type: 3}
+  _uiManagerPrefab: {fileID: 7678028157288563493, guid: dce1dda84931acf4cbda670c5c00daf9, type: 3}
+  _trapManagerPrefab: {fileID: 1450685114755792392, guid: c335f073df205cd4eb525e79a99d6745, type: 3}
+  _cameraSetupPrefab: {fileID: 4541231348026176939, guid: d9c4a4a163f4b5846a20de3ce1b43457, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

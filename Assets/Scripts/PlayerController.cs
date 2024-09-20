@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour, IPlayerController
 {
@@ -6,11 +7,13 @@ public class PlayerController : MonoBehaviour, IPlayerController
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private Transform _startPoint;
-    [SerializeField] private GameManager _gameManager;
 
     private int currentHealth;
     private Rigidbody rb;
     private bool isGrounded;
+    
+    public event UnityAction OnPlayerDeath;
+    public event UnityAction<int> OnPlayerHealthChanged;
 
     private void Start()
     {
@@ -44,9 +47,12 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Player collided with " + collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            Debug.Log("Player's dead!");
+            OnPlayerDeath?.Invoke();
         }
     }
 
@@ -54,14 +60,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         currentHealth = maxHealth;
         transform.position = new Vector3(0,2,0);
-        if (_gameManager != null)
-        {
-            _gameManager.StartGame();
-        }
-        else
-        {
-            Debug.LogError("GameManager is not injected into PlayerController");
-        }
+        
+        OnPlayerHealthChanged?.Invoke(currentHealth);
     }
 
     public int GetHealth()
@@ -72,9 +72,11 @@ public class PlayerController : MonoBehaviour, IPlayerController
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        OnPlayerHealthChanged?.Invoke(currentHealth);
+
         if (currentHealth <= 0)
         {
-            _gameManager.EndGame(false);
+            OnPlayerDeath?.Invoke();
         }
     }
 }

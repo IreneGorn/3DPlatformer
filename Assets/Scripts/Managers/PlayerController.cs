@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private Rigidbody _rb;
     private bool _isGrounded;
     private bool _canMove = true;
+
+    [SerializeField] private float _turnSmoothTime = 0.1f;
+    private float _turnSmoothVelocity;
+    private Camera _mainCamera;
+    private Transform _camTransform;
     
     public event UnityAction OnPlayerDeath;
     public event UnityAction OnPlayerWin;
@@ -19,6 +24,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        _camTransform = _mainCamera.transform;
         ResetPlayer();
     }
 
@@ -41,8 +48,17 @@ public class PlayerController : MonoBehaviour, IPlayerController
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
-        _rb.MovePosition(transform.position + movement * _moveSpeed * Time.deltaTime);
+        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical).normalized;
+        if (movement.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg + _camTransform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
+                _turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            _rb.MovePosition(transform.position + moveDir * _moveSpeed * Time.deltaTime);
+        }
     }
 
     private void HandleJump()

@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private Transform _startPoint;
 
     private int currentHealth;
     private Rigidbody rb;
@@ -59,7 +58,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     public void ResetPlayer()
     {
         currentHealth = maxHealth;
-        transform.position = new Vector3(0,2,0);
+        transform.position = new Vector3(0,5,0);
         
         OnPlayerHealthChanged?.Invoke(currentHealth);
     }

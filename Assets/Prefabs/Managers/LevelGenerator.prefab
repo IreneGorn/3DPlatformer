@@ -52,7 +52,7 @@ MonoBehaviour:
   - {fileID: 7013854043409484149, guid: 6334f8730bfff5a428c4f78284e15f22, type: 3}
   - {fileID: 6283123965966296728, guid: 7611d7a628e3e77479582f3b3914835c, type: 3}
   _platformsBeforeFinish: 20
-  _platformSpacing: 4
+  _platformSpacing: 4.7
   _finishDistance: 8
   _trapCount: 12
   _pathWidth: 4
